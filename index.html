@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammedzaid Pathan | Cybersecurity Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c10;
+    --surface: #0d1117;
+    --surface2: #131920;
+    --border: #1e2d3d;
+    --accent: #00d4ff;
+    --accent2: #00ff88;
+    --accent3: #ff6b35;
+    --text: #e6edf3;
+    --text-muted: #7d8590;
+    --text-dim: #3d4450;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    overflow-x: hidden;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Glow orbs */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb-1 { width: 500px; height: 500px; background: rgba(0,212,255,0.06); top: -100px; right: -100px; }
+  .orb-2 { width: 400px; height: 400px; background: rgba(0,255,136,0.04); bottom: 200px; left: -100px; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,12,16,0.85);
+    backdrop-filter: blur(20px);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--text-muted); font-weight: 400; }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--accent); }
+
+  /* SECTIONS */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 120px;
+    max-width: 100%;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin-bottom: 8px;
+  }
+
+  h1 .name-last {
+    color: var(--text-dim);
+  }
+
+  .hero-subtitle {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(14px, 2vw, 20px);
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 32px 0 24px;
+  }
+
+  .hero-bio {
+    max-width: 680px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 48px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    border: 1px solid var(--accent);
+  }
+
+  .btn-primary:hover { background: transparent; color: var(--accent); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 80px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .stat-item {}
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+  }
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* SECTION HEADERS */
+  .section-header {
+    margin-bottom: 56px;
+  }
+
+  .section-tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent2);
+  }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1;
+  }
+
+  /* EXPERIENCE */
+  .exp-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .exp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 32px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transition: transform 0.3s;
+    transform-origin: bottom;
+  }
+
+  .exp-card:hover { border-color: var(--accent); }
+  .exp-card:hover::before { transform: scaleY(1); }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .exp-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .exp-date {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .exp-company {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .exp-bullets li {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .exp-bullets li strong { color: var(--accent2); }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2px;
+  }
+
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+    transition: border-color 0.3s;
+  }
+
+  .skill-card:hover { border-color: var(--accent2); }
+
+  .skill-category {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 12px;
+  }
+
+  .skill-list {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2px;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .project-card:hover { border-color: var(--accent3); }
+
+  .project-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--text-dim);
+    position: absolute;
+    top: 16px; right: 20px;
+    line-height: 1;
+  }
+
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text);
+    padding-right: 48px;
+  }
+
+  .project-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* CERTIFICATES */
+  .cert-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+
+  .cert-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 12px 20px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    transition: all 0.2s;
+  }
+
+  .cert-pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* CTF / ACHIEVEMENTS */
+  .achieve-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2px;
+  }
+
+  .achieve-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+    transition: border-color 0.3s;
+  }
+
+  .achieve-card:hover { border-color: var(--accent3); }
+
+  .achieve-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .achieve-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .achieve-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* EDUCATION */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+    transition: border-color 0.3s;
+  }
+
+  .edu-card:hover { border-color: var(--accent); }
+
+  .edu-degree {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .edu-school {
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .edu-date {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  /* CONTACT / FOOTER */
+  #contact {
+    max-width: 100%;
+    padding: 80px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 8px;
+  }
+
+  .contact-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+  }
+
+  .footer-bottom {
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag { animation: fadeUp 0.6s ease both; }
+  h1 { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-subtitle { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-bio { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-cta { animation: fadeUp 0.6s 0.4s ease both; }
+  .hero-stats { animation: fadeUp 0.6s 0.5s ease both; }
+
+  /* CURSOR DOT */
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 18px;
+    background: var(--accent);
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  @media (max-width: 768px) {
+    #hero { padding-left: 24px; padding-right: 24px; }
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    section { padding: 60px 24px; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 32px; }
+    #contact { padding: 60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<nav>
+  <div class="nav-logo">MZ<span>.Pathan</span></div>
+  <ul>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-tag">Cybersecurity Portfolio</div>
+  <h1>Mohammed<br><span class="name-last">zaid Pathan</span><span class="cursor"></span></h1>
+  <div class="hero-subtitle">Cybersecurity Analyst · SOC Operations · Security Engineer</div>
+  <p class="hero-bio">
+    Security professional with hands-on experience across SOC operations, managed security services, enterprise IT support, and vulnerability management. Security-first mindset with proven ability to triage incidents, tune WAF policies, and collaborate across engineering and operations teams. Based in Surrey, BC — open to roles across Metro Vancouver.
+  </p>
+  <div class="hero-cta">
+    <a href="mailto:pathanzaid3746@gmail.com" class="btn btn-primary">→ Get in Touch</a>
+    <a href="https://github.com/PathanZ" target="_blank" class="btn btn-ghost">GitHub</a>
+    <a href="https://www.linkedin.com/in/mohammedzaid-pathan" target="_blank" class="btn btn-ghost">LinkedIn</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num">120+</span>
+      <span class="stat-label">Apps Secured</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">80%</span>
+      <span class="stat-label">False Positive Reduction</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">30+</span>
+      <span class="stat-label">Incidents / Week</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">Top 10</span>
+      <span class="stat-label">CyberSci Regionals 2024</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <div class="section-tag">Work History</div>
+    <h2>Experience</h2>
+  </div>
+  <div class="exp-grid">
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-role">Alarm Operator — Security Operations</div>
+        <div class="exp-date">May 2025 – Present</div>
+      </div>
+      <div class="exp-company">Strategic Defence Inc. · New Westminster, BC</div>
+      <ul class="exp-bullets">
+        <li>Monitored and triaged <strong>1,000+ real-time security and emergency alerts</strong>, dispatching police, fire, or medical as needed.</li>
+        <li>Guided customers through urgent incidents via phone and email with clear, calm communication.</li>
+        <li>Documented all actions, timestamps, and outcomes for accurate handoff and audit compliance.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-role">Service Technician</div>
+        <div class="exp-date">Feb 2025 – Jun 2025</div>
+      </div>
+      <div class="exp-company">London Drugs · Delta, BC</div>
+      <ul class="exp-bullets">
+        <li>Performed malware cleanup and secure system restoration for <strong>100+ customer devices</strong>.</li>
+        <li>Resolved OS integrity issues, antivirus failures, and secure boot problems — contributed to a <strong>20% reduction in escalations</strong>.</li>
+        <li>Logged 100% of diagnostics, actions, and approvals in the ticketing system for full audit accuracy.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-role">IT Assistant</div>
+        <div class="exp-date">Sep 2023 – Dec 2024</div>
+      </div>
+      <div class="exp-company">New York Institute of Technology · Vancouver, BC</div>
+      <ul class="exp-bullets">
+        <li>Supported <strong>500+ campus endpoints</strong> — Windows, macOS, network devices, and AV systems.</li>
+        <li>Maintained <strong>98% system uptime</strong> through methodical troubleshooting and configuration reviews.</li>
+        <li>Managed ServiceNow tickets and contributed procedures to internal knowledge base.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-role">MSS Engineer</div>
+        <div class="exp-date">Mar 2022 – Apr 2023</div>
+      </div>
+      <div class="exp-company">Indusface Pvt. Ltd. · India</div>
+      <ul class="exp-bullets">
+        <li>Primary technical owner for WAF environments covering <strong>30+ enterprise customers</strong> and 120+ production web apps in banking, e-commerce, and public sector.</li>
+        <li>Reduced false positives by <strong>~80%</strong> through rule tuning and traffic profiling.</li>
+        <li>Resolved ~30 customer incidents weekly; maintained <strong>90% SLA compliance</strong>.</li>
+        <li>Partnered with SOC, DevOps, and backend engineering — lowered MTTR by <strong>~40%</strong>.</li>
+        <li>Developed 25+ SOPs, onboarding guides, and incident workflows.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <div class="section-tag">Technical Competencies</div>
+    <h2>Skills</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-category">Security</div>
+      <div class="skill-list">SIEM fundamentals · WAF tuning (ModSecurity/AppTrana) · Vulnerability validation · OWASP Top 10 · Incident handling · Virtual patching · Burp Suite</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Networking & Systems</div>
+      <div class="skill-list">TCP/IP · DNS · DHCP · VPN · SSL/TLS · Windows & Linux · Packet analysis · Traffic profiling</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Monitoring & Diagnostics</div>
+      <div class="skill-list">Event logs · System traces · Telemetry review · ModSecurity traces · ServiceNow · Jira</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Automation & Scripting</div>
+      <div class="skill-list">Python · PowerShell · Diagnostic automation · API scripting · IOC aggregation</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Cloud & Tools</div>
+      <div class="skill-list">Azure fundamentals · AWS Cloud Security · Remote support tools · ADS-B / SDR tooling</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Soft Skills</div>
+      <div class="skill-list">Customer communication · Escalation management · SLA-driven support · Cross-team collaboration · Documentation</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <div class="section-tag">Work Samples</div>
+    <h2>Projects</h2>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-num">01</div>
+      <div class="project-title">Threat Intelligence Feed Integrator</div>
+      <div class="project-desc">Python-based tool using AI models to aggregate and classify IOCs from AlienVault OTX, VirusTotal, and AbuseIPDB. Improves threat visibility and reduces duplicate data for analysis workflows.</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">02</div>
+      <div class="project-title">AI-Assisted Vulnerability Triage Tool</div>
+      <div class="project-desc">Python script leveraging Claude API with Nmap XML parsing and NIST 800-53 mapping to automate vulnerability classification and prioritization. Available on GitHub.</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">03</div>
+      <div class="project-title">Mini Home SOC</div>
+      <div class="project-desc">Android/Termux-based SOC setup with Tailscale/WireGuard for remote access, continuous device discovery, and automated alerting across home network endpoints.</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">04</div>
+      <div class="project-title">UpTraq — SaaS Uptime Monitor</div>
+      <div class="project-desc">Production FastAPI/SQLAlchemy/APScheduler backend with paying Canadian customers. Handles scheduled uptime checks, alerting, and status reporting for monitored endpoints.</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">05</div>
+      <div class="project-title">ESP32 Live ADS-B Radar Display</div>
+      <div class="project-desc">Compact desk-sized live aircraft radar built with ESP32 and circular TFT display using dump1090/ascii1090 stack. Gained significant social media traction in the SDR/RF community.</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">06</div>
+      <div class="project-title">API Performance Benchmarking</div>
+      <div class="project-desc">Research paper analyzing latency, throughput, and error rates of public APIs to assess performance consistency and reliability under varying conditions.</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-header">
+    <div class="section-tag">Recognition & Contributions</div>
+    <h2>Achievements</h2>
+  </div>
+  <div class="achieve-grid">
+    <div class="achieve-card">
+      <div class="achieve-icon">🏆</div>
+      <div class="achieve-title">Top 10 — CyberSci Regionals Vancouver 2024</div>
+      <div class="achieve-desc">Competed representing NYIT Vancouver in the regional cybersecurity competition.</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-icon">⚔️</div>
+      <div class="achieve-title">HackTheBox University CTF</div>
+      <div class="achieve-desc">Represented NYIT at HackTheBox University CTF; also participated in MetaCTF 2023–2024.</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-icon">🎙️</div>
+      <div class="achieve-title">OWASP AppSec Singapore 2024 — Volunteer</div>
+      <div class="achieve-desc">Session moderator managing live technical sessions, Q&A flow, and timekeeping during conference presentations.</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-icon">📚</div>
+      <div class="achieve-title">Teaching Assistant — Data Center Security</div>
+      <div class="achieve-desc">Conducted lab sessions for 30+ students at NYIT Vancouver; developed course material and assessed assignments.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATES -->
+<section id="certifications">
+  <div class="section-header">
+    <div class="section-tag">Credentials</div>
+    <h2>Certifications</h2>
+  </div>
+  <div class="cert-grid">
+    <div class="cert-pill">CompTIA Security+</div>
+    <div class="cert-pill">CompTIA A+</div>
+    <div class="cert-pill">AWS Cloud Security Foundations</div>
+    <div class="cert-pill">ISC2 CC</div>
+    <div class="cert-pill">NIST RMF v2</div>
+    <div class="cert-pill">Customer Service Foundations — LinkedIn Learning (In Progress)</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header">
+    <div class="section-tag">Academic Background</div>
+    <h2>Education</h2>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-degree">MSc in Cybersecurity</div>
+      <div class="edu-school">New York Institute of Technology · Vancouver, BC</div>
+      <div class="edu-date">May 2023 – Dec 2024</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">BE in Information Technology</div>
+      <div class="edu-school">GTU · India</div>
+      <div class="edu-date">Jun 2018 – Jun 2022</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="contact-title">Let's Connect</div>
+  <div class="contact-sub">Open to cybersecurity analyst, SOC, and IT security roles in Metro Vancouver</div>
+  <div class="contact-links">
+    <a href="mailto:pathanzaid3746@gmail.com" class="btn btn-primary">pathanzaid3746@gmail.com</a>
+    <a href="https://github.com/PathanZ" target="_blank" class="btn btn-ghost">GitHub · PathanZ</a>
+    <a href="https://www.linkedin.com/in/mohammedzaid-pathan" target="_blank" class="btn btn-ghost">LinkedIn</a>
+    <a href="tel:6725881700" class="btn btn-ghost">672-588-1700</a>
+  </div>
+  <div class="footer-bottom">Surrey, BC · Canadian Open Work Permit valid until July 2028 · © 2026 Mohammedzaid Pathan</div>
+</div>
+
+</body>
+</html>
