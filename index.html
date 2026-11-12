@@ -22,6 +22,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 70px; }
 
   body {
     background: var(--bg);
@@ -80,6 +81,7 @@
 
   nav ul {
     list-style: none;
+    margin: 0;
     display: flex;
     gap: 32px;
   }
@@ -405,7 +407,7 @@
     font-weight: 700;
     margin-bottom: 12px;
     color: var(--text);
-    padding-right: 48px;
+    padding-right: 72px;
   }
 
   .project-desc {
@@ -582,7 +584,20 @@
   @media (max-width: 768px) {
     #hero { padding-left: 24px; padding-right: 24px; }
     nav { padding: 16px 24px; }
-    nav ul { display: none; }
+    nav { flex-direction: column; align-items: flex-start; gap: 10px; padding: 12px 20px; }
+    nav ul { gap: 8px 16px; flex-wrap: wrap; width: 100%; }
+    nav a { font-size: 10px; letter-spacing: 1.5px; white-space: nowrap; }
+    #hero { padding-top: 150px; min-height: auto; padding-bottom: 60px; }
+    h1 { letter-spacing: -1.5px; }
+    .hero-bio { font-size: 13px; margin-bottom: 32px; }
+    .hero-stats { margin-top: 48px; padding-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .stat-num { font-size: 28px; }
+    .exp-card { padding: 24px 20px; }
+    .exp-header { flex-direction: column; gap: 4px; }
+    .exp-date { white-space: normal; }
+    .skills-grid, .projects-grid, .achieve-grid { grid-template-columns: 1fr; }
+    .skill-card, .project-card, .achieve-card, .edu-card { padding: 22px 20px; }
+    section[id] { scroll-margin-top: 90px; }
     section { padding: 60px 24px; }
     .edu-grid { grid-template-columns: 1fr; }
     .hero-stats { gap: 32px; }
@@ -601,6 +616,7 @@
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -608,11 +624,11 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-tag">Cybersecurity Portfolio</div>
+  <div class="hero-tag">Professional Portfolio</div>
   <h1>Mohammed<br><span class="name-last">zaid Pathan</span><span class="cursor"></span></h1>
-  <div class="hero-subtitle">Cybersecurity Analyst · SOC Operations · Security Engineer</div>
+  <div class="hero-subtitle">Technical Support · IT Operations · Cybersecurity</div>
   <p class="hero-bio">
-    Security professional with hands-on experience across SOC operations, managed security services, enterprise IT support, and vulnerability management. Security-first mindset with proven ability to triage incidents, tune WAF policies, and collaborate across engineering and operations teams. Based in Surrey, BC — open to roles across Metro Vancouver.
+    Client-focused technical support and security professional with 3+ years of customer-facing experience as the first point of contact for enterprise SaaS clients, university staff and students, and retail customers. Experienced in ticket triage and escalation, user administration in Active Directory, Entra ID and Microsoft 365, Windows troubleshooting, and 24x7 shift operations. MSc in Cybersecurity. Based in Surrey, BC — open to roles across Metro Vancouver.
   </p>
   <div class="hero-cta">
     <a href="mailto:pathanzaid3746@gmail.com" class="btn btn-primary">→ Get in Touch</a>
@@ -621,16 +637,16 @@
   </div>
   <div class="hero-stats">
     <div class="stat-item">
-      <span class="stat-num">120+</span>
-      <span class="stat-label">Apps Secured</span>
+      <span class="stat-num">30+</span>
+      <span class="stat-label">Enterprise Clients Supported</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num">80%</span>
+      <span class="stat-num">~90%</span>
       <span class="stat-label">False Positive Reduction</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num">30+</span>
-      <span class="stat-label">Incidents / Week</span>
+      <span class="stat-num">~100</span>
+      <span class="stat-label">Tickets / Week at NYIT</span>
     </div>
     <div class="stat-item">
       <span class="stat-num">Top 10</span>
@@ -651,27 +667,39 @@
 
     <div class="exp-card">
       <div class="exp-header">
-        <div class="exp-role">Alarm Operator — Security Operations</div>
+        <div class="exp-role">Security Command Centre Operator</div>
         <div class="exp-date">May 2025 – Present</div>
       </div>
       <div class="exp-company">Strategic Defence Inc. · New Westminster, BC</div>
       <ul class="exp-bullets">
-        <li>Monitored and triaged <strong>1,000+ real-time security and emergency alerts</strong>, dispatching police, fire, or medical as needed.</li>
-        <li>Guided customers through urgent incidents via phone and email with clear, calm communication.</li>
-        <li>Documented all actions, timestamps, and outcomes for accurate handoff and audit compliance.</li>
+        <li>First point of contact on a 24x7 shift rotation, monitoring and triaging <strong>~200 alarm signals per shift</strong> across multiple client sites using Immix and MicroKey.</li>
+        <li>Perform secondary review of alerts and follow defined escalation procedures, communicating with customers, police and fire departments by phone and email.</li>
+        <li>Developed SOPs and training documentation for new operators to standardize response steps across shifts.</li>
       </ul>
     </div>
 
     <div class="exp-card">
       <div class="exp-header">
-        <div class="exp-role">Service Technician</div>
-        <div class="exp-date">Feb 2025 – Jun 2025</div>
+        <div class="exp-role">Service Technician (Part-time)</div>
+        <div class="exp-date">Feb 2025 – Present</div>
       </div>
       <div class="exp-company">London Drugs · Delta, BC</div>
       <ul class="exp-bullets">
-        <li>Performed malware cleanup and secure system restoration for <strong>100+ customer devices</strong>.</li>
-        <li>Resolved OS integrity issues, antivirus failures, and secure boot problems — contributed to a <strong>20% reduction in escalations</strong>.</li>
-        <li>Logged 100% of diagnostics, actions, and approvals in the ticketing system for full audit accuracy.</li>
+        <li>Diagnose and resolve Windows, hardware, network, mobile (Android and iOS) and application issues for walk-in customers, handling <strong>~10–15 devices and repairs per week</strong>.</li>
+        <li>Perform OS installations and upgrades, malware removal, data migration, and printer and peripheral setup.</li>
+        <li>Maintain daily repair records and inventory for audits; coordinate with vendors on warranty, RMA and parts requests.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-role">IT Support Administrator (Volunteer)</div>
+        <div class="exp-date">Apr 2026 – Present</div>
+      </div>
+      <div class="exp-company">Faizan e Madina Islamic Centre · Surrey, BC</div>
+      <ul class="exp-bullets">
+        <li>Create and manage user accounts with least-privilege access and administer the centre's Microsoft 365 and email.</li>
+        <li>Set up printers, projectors and Microsoft Teams meetings; coordinate monthly Teams meetings with partner centres across Canada.</li>
       </ul>
     </div>
 
@@ -682,24 +710,26 @@
       </div>
       <div class="exp-company">New York Institute of Technology · Vancouver, BC</div>
       <ul class="exp-bullets">
-        <li>Supported <strong>500+ campus endpoints</strong> — Windows, macOS, network devices, and AV systems.</li>
-        <li>Maintained <strong>98% system uptime</strong> through methodical troubleshooting and configuration reviews.</li>
-        <li>Managed ServiceNow tickets and contributed procedures to internal knowledge base.</li>
+        <li>Provided first-level on-site and remote support to staff, students and remote faculty, handling <strong>~100 ServiceNow tickets per week</strong> and escalating complex issues to the central IT team in New York.</li>
+        <li>Administered user accounts in Active Directory and Azure AD/Entra ID, including provisioning, password resets, access changes, onboarding/offboarding and Group Policy support.</li>
+        <li>Managed Microsoft 365 accounts, licensing and mailbox requests; troubleshot Outlook and email security issues; triaged suspected phishing emails and escalated threats.</li>
+        <li>Configured and deployed <strong>150 devices</strong> and supported hardware, software, mobile and AV equipment (projectors, conference cameras, meeting room screens).</li>
+        <li>Analyzed recurring tickets and wrote SOPs so technicians could resolve common issues without repeating root cause analysis.</li>
+        <li>Maintained inventory for <strong>500+ IT assets</strong>, coordinated warranties and contracts with the main IT team, assisted with Windows Server maintenance, and wrote scripts to automate daily tasks.</li>
       </ul>
     </div>
 
     <div class="exp-card">
       <div class="exp-header">
-        <div class="exp-role">MSS Engineer</div>
+        <div class="exp-role">MSS Security Engineer</div>
         <div class="exp-date">Mar 2022 – Apr 2023</div>
       </div>
       <div class="exp-company">Indusface Pvt. Ltd. · India</div>
       <ul class="exp-bullets">
-        <li>Primary technical owner for WAF environments covering <strong>30+ enterprise customers</strong> and 120+ production web apps in banking, e-commerce, and public sector.</li>
-        <li>Reduced false positives by <strong>~80%</strong> through rule tuning and traffic profiling.</li>
-        <li>Resolved ~30 customer incidents weekly; maintained <strong>90% SLA compliance</strong>.</li>
-        <li>Partnered with SOC, DevOps, and backend engineering — lowered MTTR by <strong>~40%</strong>.</li>
-        <li>Developed 25+ SOPs, onboarding guides, and incident workflows.</li>
+        <li>Served as first line of contact for <strong>30+ enterprise SaaS clients</strong> in banking, e-commerce and government, troubleshooting live over calls, Microsoft Teams, email and chat and performing root cause analysis.</li>
+        <li>Owned the client cycle from onboarding and product demos to post-deployment tuning, coordinating with development and sales teams on client requests.</li>
+        <li>Tracked and documented issues in Jira, investigated <strong>~20–30 incidents per week</strong>, and explained technical impact to client management in business terms.</li>
+        <li>Integrated client SIEMs for log delivery and tuned WAF rules, reducing false positives by <strong>~90%</strong>; mentored new joiners on tools and processes.</li>
       </ul>
     </div>
 
@@ -716,28 +746,28 @@
   </div>
   <div class="skills-grid">
     <div class="skill-card">
+      <div class="skill-category">Support & Ticketing</div>
+      <div class="skill-list">ServiceNow · Jira · Ticket triage and escalation · Remote support · SOP and knowledge documentation</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Identity & Access</div>
+      <div class="skill-list">Active Directory · Azure AD/Entra ID · User provisioning and deprovisioning · Password resets · Group Policy · Least-privilege access</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Microsoft 365</div>
+      <div class="skill-list">Exchange Online/Outlook · M365 licensing · Microsoft Teams · Microsoft Office Suite · Microsoft Defender</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Systems & Networking</div>
+      <div class="skill-list">Windows 10/11 · Windows Server · TCP/IP · DNS · DHCP · VPN · Hardware and peripheral troubleshooting</div>
+    </div>
+    <div class="skill-card">
       <div class="skill-category">Security</div>
-      <div class="skill-list">SIEM fundamentals · WAF tuning (ModSecurity/AppTrana) · Vulnerability validation · OWASP Top 10 · Incident handling · Virtual patching · Burp Suite</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-category">Networking & Systems</div>
-      <div class="skill-list">TCP/IP · DNS · DHCP · VPN · SSL/TLS · Windows & Linux · Packet analysis · Traffic profiling</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-category">Monitoring & Diagnostics</div>
-      <div class="skill-list">Event logs · System traces · Telemetry review · ModSecurity traces · ServiceNow · Jira</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-category">Automation & Scripting</div>
-      <div class="skill-list">Python · PowerShell · Diagnostic automation · API scripting · IOC aggregation</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-category">Cloud & Tools</div>
-      <div class="skill-list">Azure fundamentals · AWS Cloud Security · Remote support tools · ADS-B / SDR tooling</div>
+      <div class="skill-list">Phishing email triage · Log analysis · SIEM integration · Splunk (basic) · WAF tuning (ModSecurity/AppTrana) · OWASP Top 10 · Burp Suite</div>
     </div>
     <div class="skill-card">
       <div class="skill-category">Soft Skills</div>
-      <div class="skill-list">Customer communication · Escalation management · SLA-driven support · Cross-team collaboration · Documentation</div>
+      <div class="skill-list">Customer communication · Escalation management · Shift handoffs · Cross-team collaboration · Training and mentoring</div>
     </div>
   </div>
 </section>
@@ -754,36 +784,42 @@
 
     <div class="project-card">
       <div class="project-num">01</div>
+      <div class="project-title">Phishing Email Analyser</div>
+      <div class="project-desc">Static, browser-based web app that flags common phishing warning signs in pasted emails, with all analysis run locally and no data uploaded.</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">02</div>
       <div class="project-title">Threat Intelligence Feed Integrator</div>
       <div class="project-desc">Python-based tool using AI models to aggregate and classify IOCs from AlienVault OTX, VirusTotal, and AbuseIPDB. Improves threat visibility and reduces duplicate data for analysis workflows.</div>
     </div>
 
     <div class="project-card">
-      <div class="project-num">02</div>
+      <div class="project-num">03</div>
       <div class="project-title">AI-Assisted Vulnerability Triage Tool</div>
       <div class="project-desc">Python script leveraging Claude API with Nmap XML parsing and NIST 800-53 mapping to automate vulnerability classification and prioritization. Available on GitHub.</div>
     </div>
 
     <div class="project-card">
-      <div class="project-num">03</div>
+      <div class="project-num">04</div>
       <div class="project-title">Mini Home SOC</div>
       <div class="project-desc">Android/Termux-based SOC setup with Tailscale/WireGuard for remote access, continuous device discovery, and automated alerting across home network endpoints.</div>
     </div>
 
     <div class="project-card">
-      <div class="project-num">04</div>
-      <div class="project-title">UpTraq — SaaS Uptime Monitor</div>
-      <div class="project-desc">Production FastAPI/SQLAlchemy/APScheduler backend with paying Canadian customers. Handles scheduled uptime checks, alerting, and status reporting for monitored endpoints.</div>
+      <div class="project-num">05</div>
+      <div class="project-title">UpTraQR — SaaS Uptime Monitor</div>
+      <div class="project-desc">Live uptime monitoring platform at uptraqr.com, built on FastAPI, SQLAlchemy and APScheduler. Runs scheduled uptime and SSL expiry checks, sends email alerts, and offers public status pages.</div>
     </div>
 
     <div class="project-card">
-      <div class="project-num">05</div>
+      <div class="project-num">06</div>
       <div class="project-title">ESP32 Live ADS-B Radar Display</div>
       <div class="project-desc">Compact desk-sized live aircraft radar built with ESP32 and circular TFT display using dump1090/ascii1090 stack. Gained significant social media traction in the SDR/RF community.</div>
     </div>
 
     <div class="project-card">
-      <div class="project-num">06</div>
+      <div class="project-num">07</div>
       <div class="project-title">API Performance Benchmarking</div>
       <div class="project-desc">Research paper analyzing latency, throughput, and error rates of public APIs to assess performance consistency and reliability under varying conditions.</div>
     </div>
@@ -832,11 +868,12 @@
     <h2>Certifications</h2>
   </div>
   <div class="cert-grid">
-    <div class="cert-pill">CompTIA Security+</div>
     <div class="cert-pill">CompTIA A+</div>
+    <div class="cert-pill">CompTIA Security+</div>
     <div class="cert-pill">AWS Cloud Security Foundations</div>
-    <div class="cert-pill">ISC2 CC</div>
-    <div class="cert-pill">NIST RMF v2</div>
+    <div class="cert-pill">ISC² Certified in Cybersecurity (CC)</div>
+    <div class="cert-pill">Palo Alto Networks Cybersecurity Fundamentals</div>
+    <div class="cert-pill">NIST Risk Management Framework (RMF) v2</div>
     <div class="cert-pill">Customer Service Foundations — LinkedIn Learning (In Progress)</div>
   </div>
 </section>
@@ -866,7 +903,7 @@
 <!-- CONTACT -->
 <div id="contact">
   <div class="contact-title">Let's Connect</div>
-  <div class="contact-sub">Open to cybersecurity analyst, SOC, and IT security roles in Metro Vancouver</div>
+  <div class="contact-sub">Open to technical support, IT and cybersecurity roles in Metro Vancouver</div>
   <div class="contact-links">
     <a href="mailto:pathanzaid3746@gmail.com" class="btn btn-primary">pathanzaid3746@gmail.com</a>
     <a href="https://github.com/PathanZ" target="_blank" class="btn btn-ghost">GitHub · PathanZ</a>
